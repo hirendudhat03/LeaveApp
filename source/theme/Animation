@@ -1,0 +1,46 @@
+const [spinAnim, setSpinAnim] = useState(new Animated.Value(0));
+  const spin = spinAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '50deg'],
+  });
+
+  useEffect(() => {
+    //animate();
+  }, []);
+
+  const animate = () => {
+    Animated.timing(spinAnim, {
+      toValue: 1,
+      duration: 1000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+
+    //   Animated.timing(spinAnim, {
+    //     toValue: 1,
+    //     duration: 1000,
+    //     easing: Easing.linear,
+    //     useNativeDriver: true,
+    //   }),
+    // ).start();
+  };
+
+
+
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 5000
+    }).start();
+  };
+
+  const fadeOut = () => {
+    // Will change fadeAnim value to 0 in 5 seconds
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 5000
+    }).start();
+  };
